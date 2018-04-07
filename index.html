@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <title>使用 clipboard.js 實作網頁點擊複製內容功能示範</title>
+    </head>
+    <body>
+        <h1>使用 clipboard.js 實作網頁點擊複製內容功能示範</h1>
+        <h3>教學網址：<a href="https://blog.reh.tw/archives/351/" target="_blank">https://blog.reh.tw/archives/351/</a></h3>
+        <hr><br>
+
+        <p>input 範例</p>
+        <input id="content_1" value="【JavaScript】網頁點擊複製內容功能教學，使用 clipboard.js - https://blog.reh.tw/archives/351/"><br>
+        <button class="copy" data-clipboard-target="#content_1"> 複製 </button>
+
+        <br><br><hr><br>
+
+        <p>textarea 範例</p>
+        <textarea id="content_2" rows="4" cols="60">【JavaScript】網頁點擊複製內容功能教學，使用 clipboard.js
+https://blog.reh.tw/archives/351/</textarea><br>
+        <button class="copy" data-clipboard-target="#content_2"> 複製 </button>
+
+        <br><br><hr><br>
+
+        <p>只有按鈕的範例</p>
+        <button class="copy" data-clipboard-text="【JavaScript】網頁點擊複製內容功能教學，使用 clipboard.js - https://blog.reh.tw/archives/351/"> 複製 </button>
+
+        <!-- clipboard.js -->
+        <script type="text/javascript" src="js/clipboard.min.js"></script>
+        <script type="text/javascript">
+            /* 複製內容功能設定 */
+            var clipboard = new ClipboardJS('.copy');
+
+            //複製成功執行
+            clipboard.on('success', function(e) {
+                e.clearSelection();
+                alert("複製成功，您複製的內容為\n\n「"+e.text+"」");
+            });
+
+            //複製失敗執行
+            clipboard.on('error', function(e) {
+                alert("複製失敗");
+            });
+        </script>
+    </body>
+</html>
